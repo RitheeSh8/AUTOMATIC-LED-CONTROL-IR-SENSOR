@@ -69,23 +69,18 @@ An **IR sensor** detects the presence of an object by emitting and receiving inf
 
 ### 💻 **Program**
 
-
-```c
+```
 #include "main.h"
-
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-
 int main(void)
 {
     HAL_Init();
     SystemClock_Config();
     MX_GPIO_Init();
-
     while (1)
     {
         GPIO_PinState ir = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10); // IR OUT at PA10 (D2)
-
 	      if (ir == GPIO_PIN_RESET)  // IR sensor HIGH = object detected
 	      {
 	          HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, GPIO_PIN_SET); // Turn ON LED
@@ -94,7 +89,6 @@ int main(void)
 	      {
 	          HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, GPIO_PIN_RESET); // Turn OFF LED
 	      }
-
 	      HAL_Delay(100);
     }
 }
@@ -103,9 +97,12 @@ int main(void)
 ### OUTPUT
 CASE 1: LED ON 
 
+![IMG-20251112-WA0065 1](https://github.com/user-attachments/assets/fc99ce4d-84a6-43bd-bd3a-1970cb42339b)
+
 CASE 2: LED OFF
 
----
+![IMG-20251112-WA0066 1](https://github.com/user-attachments/assets/ee3178a7-c0ea-4779-821a-6e2c1e15d16e)
+
 ### RESULT
 
 The experiment on IR Sensor-Based Automatic LED Control using STM32 was successfully carried out. The STM32 microcontroller accurately read the IR sensor output and controlled the LED based on object detection. When an object was detected, the LED glowed (ON) and when no object was present, the LED remained OFF. Thus, the objective of the experiment was achieved.
